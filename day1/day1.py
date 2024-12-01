@@ -18,14 +18,18 @@ def _calculate_distance(a: list[int], b: list[int]) -> int:
 def calculate_distance(file: Path) -> int:
     return _calculate_distance(*lists_from_file(file))
 
+
 def _calculate_similarity(a: list[int], b: list[int]) -> int:
     return sum([a_i * b.count(a_i) for a_i in a])
+
 
 def calculate_similarity(file: Path) -> int:
     return _calculate_similarity(*lists_from_file(file))
 
+
 def calculate(file: Path) -> Tuple[int, int]:
     return calculate_distance(file), calculate_similarity(file)
+
 
 if __name__ == "__main__":
     assert calculate(Path("sample.txt")) == (11, 31)
